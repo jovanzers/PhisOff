@@ -101,12 +101,12 @@ try:
         otp = requests.post('https://myinfolayanan-app.net/_/graph', params=params, cookies=cookies, headers=headers, json=json_data_otp)
         no += 1
         print(f'\33[33m{no} request terkirim\033[0m')
-        if 'maintenance' in [response.text, otp.text]:
-            print('Response: \33[31mWeb Maintenance\033[0m')
-            gagal += 1
-        else:
+        if response.json().get('data') or otp.json().get('data'):
             print(f'Response: \33[32mSukses\033[0m {otp.text}')
             sukses += 1
+        else:
+            print('Response: \33[31mGagal\033[0m (web maintenance / dll.)')
+            gagal += 1
 except KeyboardInterrupt:
     print(f'\n\33[33mTotal: {no} requests\033[0m')
     print(f'\33[32mSukses: {sukses} requests\033[0m')
