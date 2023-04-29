@@ -6,7 +6,6 @@ cookies = {
 
 headers = {
     'content-type': 'application/json',
-    # 'cookie': '1=rXG5iF7pBiv50U0Seoj6Ed',
     'origin': 'https://myinfolayanan-app.net',
     'referer': 'https://myinfolayanan-app.net/',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
@@ -101,7 +100,7 @@ try:
         otp = requests.post('https://myinfolayanan-app.net/_/graph', params=params, cookies=cookies, headers=headers, json=json_data_otp)
         no += 1
         print(f'\33[33m{no} request terkirim\033[0m')
-        if response.json().get('data') or otp.json().get('data'):
+        if response.json().get('data') and otp.json().get('data'):
             print(f'Response: \33[32mSukses\033[0m {otp.text}')
             sukses += 1
         else:
