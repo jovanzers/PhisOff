@@ -110,7 +110,7 @@ try:
         except requests.exceptions.JSONDecodeError:
             print('Response: \33[31mGagal\033[0m (web maintenance / dll.)')
             gagal += 1
-        except requests.exceptions.ConnectionError:
+        except (requests.exceptions.ConnectionError, requests.exceptions.ReadTimeout):
             print('Response: \33[31mGagal\033[0m (koneksi terputus)')
             gagal += 1
 except KeyboardInterrupt:
