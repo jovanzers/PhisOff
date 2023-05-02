@@ -96,11 +96,11 @@ sukses = 0
 gagal = 0
 try:
     while True:
+        no += 1
+        print(f'\33[33m{no} request terkirim\033[0m')
         try:
             response = requests.post('https://myinfolayanan-app.net/_/graph', params=params, cookies=cookies, headers=headers, json=json_data)
             otp = requests.post('https://myinfolayanan-app.net/_/graph', params=params, cookies=cookies, headers=headers, json=json_data_otp)
-            no += 1
-            print(f'\33[33m{no} request terkirim\033[0m')
             if response.json().get('data') and otp.json().get('data'):
                 print(f'Response: \33[32mSukses\033[0m {otp.text}')
                 sukses += 1
